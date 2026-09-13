@@ -188,6 +188,11 @@ section{position:relative}
 .field label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .field input,.field select{height:50px;border-radius:4px;border:1px solid var(--line);background:#0e0c0a;color:var(--cream);padding:0 14px;font:inherit;font-size:15px;outline:none;transition:border-color .3s}
 .field input:focus,.field select:focus{border-color:var(--gold)}
+.field.full{grid-column:1/-1}
+.field input.err{border-color:var(--ember);box-shadow:0 0 0 3px rgba(217,101,60,.2)}
+.shake{animation:shake .45s}
+@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+[hidden]{display:none!important}
 .receipt{position:relative;padding:clamp(24px,3vw,40px);border:1px solid rgba(236,210,156,.35);border-radius:4px;background:linear-gradient(180deg,#17140f,#100e0b)}
 .receipt h3{margin:0 0 4px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:34px}
 .receipt .sub{font-size:12px;color:var(--muted);letter-spacing:.06em}
@@ -360,7 +365,7 @@ footer a{color:var(--cream)}
         <span class="ln"><span><em>как надо</em></span></span>
       </h1>
       <div class="hero-row">
-        <p class="lead hero-in">Сазан, судак и карась от килограмма — с хрустящей золотой корочкой и сочные внутри. Садитесь в зале или соберите заказ за минуту.</p>
+        <p class="lead hero-in">Сазан, судак и карась от килограмма — с хрустящей золотой корочкой и сочные внутри. Садитесь в зале, заберите сами или закажите доставку.</p>
         <div class="cta hero-in">
           <a class="btn btn-gold magnet" href="#order">Собрать заказ
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -378,8 +383,8 @@ footer a{color:var(--cream)}
 
   <div class="marquee" aria-hidden="true">
     <div class="track">
-      <span>Сазан<i>✦</i></span><span>Судак<i>✦</i></span><span>Карась<i>✦</i></span><span>Золотая корочка<i>✦</i></span><span>Станционная, 70А<i>✦</i></span><span>Ежедневно с 12 до 23<i>✦</i></span>
-      <span>Сазан<i>✦</i></span><span>Судак<i>✦</i></span><span>Карась<i>✦</i></span><span>Золотая корочка<i>✦</i></span><span>Станционная, 70А<i>✦</i></span><span>Ежедневно с 12 до 23<i>✦</i></span>
+      <span>Сазан<i>✦</i></span><span>Судак<i>✦</i></span><span>Карась<i>✦</i></span><span>Золотая корочка<i>✦</i></span><span>Доставка и самовывоз<i>✦</i></span><span>Станционная, 70А<i>✦</i></span><span>Ежедневно с 12 до 23<i>✦</i></span>
+      <span>Сазан<i>✦</i></span><span>Судак<i>✦</i></span><span>Карась<i>✦</i></span><span>Золотая корочка<i>✦</i></span><span>Доставка и самовывоз<i>✦</i></span><span>Станционная, 70А<i>✦</i></span><span>Ежедневно с 12 до 23<i>✦</i></span>
     </div>
   </div>
 
@@ -447,7 +452,7 @@ footer a{color:var(--cream)}
           <div class="ico"><svg viewBox="0 0 32 32"><path d="M4 20h24M6 20a10 10 0 0 1 20 0M16 8v2M3 24h26"/></svg></div>
           <div class="n">03</div>
           <h3>Подаём</h3>
-          <p>Горячей — за столом в зале на Станционной или к назначенному времени по заказу в WhatsApp.</p>
+          <p>Горячей — за столом в зале, навынос или с доставкой до двери. Заказ — в WhatsApp.</p>
         </div>
       </div>
     </div>
@@ -457,7 +462,7 @@ footer a{color:var(--cream)}
     <div class="wrap">
       <div class="sec-head rv-up">
         <div><p class="eyebrow">Заказ за минуту</p><h2 class="h2">Соберите<br><em>свой стол</em></h2></div>
-        <p>Выберите рыбу, вес и гарниры — мы сложим сумму и откроем WhatsApp с готовым сообщением. Останется нажать «отправить».</p>
+        <p>Рыба, вес, гарниры и как получить — самовывоз, доставка или зал. Сумма посчитается сама, а кнопка сразу откроет WhatsApp с готовым заказом.</p>
       </div>
       <div class="builder">
         <div class="panel rv-up">
@@ -483,12 +488,14 @@ footer a{color:var(--cream)}
             <div class="extras" id="extras"></div>
           </div>
           <div class="block">
-            <h3 class="q"><i>04</i>Как и когда</h3>
+            <h3 class="q"><i>04</i>Как получить</h3>
             <div class="seg" id="mode">
-              <button data-mode="В зале" aria-pressed="true">Поем в зале</button>
-              <button data-mode="Заберу сам" aria-pressed="false">Заберу сам</button>
+              <button data-mode="Самовывоз" aria-pressed="true">Самовывоз</button>
+              <button data-mode="Доставка" aria-pressed="false">Доставка</button>
+              <button data-mode="В зале" aria-pressed="false">Поем в зале</button>
             </div>
             <div class="fields">
+              <div class="field full" id="addrField" hidden><label for="addr">Адрес доставки</label><input id="addr" autocomplete="street-address" placeholder="Улица, дом, подъезд, квартира"></div>
               <div class="field"><label for="time">Время</label><select id="time"></select></div>
               <div class="field"><label for="name">Имя</label><input id="name" autocomplete="given-name" placeholder="Как к вам обращаться"></div>
             </div>
@@ -501,8 +508,8 @@ footer a{color:var(--cream)}
           <div class="total"><span>Итого</span><b id="total">7 200 ₸</b></div>
           <a class="btn btn-gold send magnet" id="send" href="https://wa.me/77784075343" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg>
-            Отправить в WhatsApp</a>
-          <p class="fine">Цены по меню кафе. Итоговую сумму и время подтвердит администратор в ответном сообщении.</p>
+            Заказать в WhatsApp</a>
+          <p class="fine">Нажмите — откроется чат WhatsApp с готовым заказом, останется только отправить. Итоговую сумму, время и доставку подтвердит кафе.</p>
         </aside>
       </div>
     </div>
@@ -588,7 +595,7 @@ footer a{color:var(--cream)}
     <div class="wrap">
       <p class="eyebrow" style="margin-bottom:30px">Сегодня с 12:00 до 23:00</p>
       <h2 class="big">Прого<em>лодались?</em></h2>
-      <p>Соберите заказ на сайте — мы ответим в WhatsApp и всё приготовим.</p>
+      <p>Соберите заказ с доставкой или самовывозом — ответим в WhatsApp и всё приготовим.</p>
       <a class="btn btn-gold magnet" href="#order">Собрать заказ</a>
     </div>
   </section>
@@ -675,7 +682,7 @@ footer a{color:var(--cream)}
   /* ---------- order builder ---------- */
   const FISH = { sazan: ['Сазан', 4800], sudak: ['Судак', 5500], karas: ['Карась', 3000] };
   const EXTRA = [['salat', 'Свежий салат', 1000], ['achichuk', 'Ачичук', 1000], ['nan', 'Нан', 300], ['fri', 'Картофель фри, 200 г', 800], ['nug', 'Наггетсы, 10 шт', 1500], ['rings', 'Луковые кольца, 10 шт', 1500]];
-  const S = { fish: 'sazan', kg: 1.5, ex: {}, mode: 'В зале' };
+  const S = { fish: 'sazan', kg: 1.5, ex: {}, mode: 'Самовывоз' };
   const $ = id => document.getElementById(id);
   $('extras').innerHTML = EXTRA.map(([k, n, p]) => `<div class="extra"><span class="nm">${n}</span><span class="pr">${fmt(p)}</span><div class="stepper"><button data-ex="${k}" data-d="-1" aria-label="Убрать ${n}">−</button><span id="ex-${k}">0</span><button data-ex="${k}" data-d="1" aria-label="Добавить ${n}">+</button></div></div>`).join('');
   const times = ['Как можно скорее']; for (let t = 12; t < 23; t += .5) times.push(`${Math.floor(t)}:${t % 1 ? '30' : '00'}`);
@@ -697,7 +704,8 @@ footer a{color:var(--cream)}
     shownTotal = total;
     if (G && bump) gsap.fromTo('#kgOut', { scale: .86 }, { scale: 1, duration: .5, ease: 'back.out(3)' });
     const name = $('name').value.trim();
-    const msg = ['Здравствуйте! Хочу заказать:', ...rows.map(r => '• ' + r[0]), '', `Формат: ${S.mode}`, `Время: ${$('time').value}`, name ? `Имя: ${name}` : null, `Сумма по сайту: ${fmt(total)}`].filter(x => x !== null).join('\n');
+    const addr = $('addr').value.trim(), dlv = S.mode === 'Доставка';
+    const msg = ['Здравствуйте! Заказ с сайта:', ...rows.map(r => '• ' + r[0]), '', `Способ: ${S.mode}`, dlv ? `Адрес: ${addr || '—'}` : null, `Время: ${$('time').value}`, name ? `Имя: ${name}` : null, `Сумма по сайту: ${fmt(total)}${dlv ? ' + доставка' : ''}`].filter(x => x !== null).join('\n');
     $('send').href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
   }
   function pickFish(k) { S.fish = k; document.querySelectorAll('[data-fish-opt]').forEach(b => b.setAttribute('aria-pressed', b.dataset.fishOpt === k)); render(); }
@@ -706,9 +714,20 @@ footer a{color:var(--cream)}
   $('kgMinus').onclick = () => { S.kg = Math.max(1, S.kg - .5); render(1); };
   $('kgPlus').onclick = () => { S.kg = Math.min(10, S.kg + .5); render(1); };
   $('extras').addEventListener('click', e => { const b = e.target.closest('[data-ex]'); if (!b) return; const k = b.dataset.ex; S.ex[k] = Math.max(0, Math.min(20, (S.ex[k] || 0) + +b.dataset.d)); $('ex-' + k).textContent = S.ex[k]; render(); });
-  document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => { S.mode = b.dataset.mode; document.querySelectorAll('[data-mode]').forEach(x => x.setAttribute('aria-pressed', x === b)); render(); }));
+  document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => { S.mode = b.dataset.mode; document.querySelectorAll('[data-mode]').forEach(x => x.setAttribute('aria-pressed', x === b)); $('addrField').hidden = S.mode !== 'Доставка'; render(); if (S.mode === 'Доставка') $('addr').focus({ preventScroll: true }); }));
   $('time').onchange = () => render(); $('name').oninput = () => render();
+  $('addr').oninput = () => { $('addr').classList.remove('err'); render(); };
   render();
+  $('send').addEventListener('click', e => {
+    e.preventDefault();
+    render();
+    if (S.mode === 'Доставка' && !$('addr').value.trim()) {
+      const f = $('addrField'); $('addr').classList.add('err'); f.classList.remove('shake'); void f.offsetWidth; f.classList.add('shake');
+      $('addr').focus(); return;
+    }
+    const url = $('send').href;
+    if (matchMedia('(pointer: coarse)').matches) location.href = url; else window.open(url, '_blank', 'noopener');
+  });
 
   /* ---------- reviews ---------- */
   const qs = [...document.querySelectorAll('.quote')]; let qi = 0, qTimer;
