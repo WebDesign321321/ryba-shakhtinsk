@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Жареная рыба · два варианта сайта</title>
+<meta name="description" content="Два концепта сайта для кафе «Жареная рыба» в Шахтинске от студии VANTA.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%9F%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Жареная рыба · два варианта сайта">
+<meta property="og:description" content="Два концепта сайта для кафе «Жареная рыба» в Шахтинске. Выберите, какой ближе.">
+<meta property="og:image" content="https://webdesign321321.github.io/ryba-shakhtinsk/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#111214; --card:#1a1b1f; --line:rgba(255,255,255,.1); --text:#f2f0eb; --muted:#9b9a96; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100svh; background:var(--bg); color:var(--text); font-family:'Manrope',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  .wrap { width:min(1200px,100% - 32px); margin-inline:auto; padding-block:56px 40px; }
+  .top { display:grid; gap:14px; margin-bottom:40px; }
+  .kick { font-size:12px; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); }
+  h1 { margin:0; font-size:clamp(34px,5.4vw,64px); line-height:1; letter-spacing:-.03em; font-weight:800; }
+  .top p { margin:0; max-width:560px; color:var(--muted); font-size:17px; line-height:1.5; }
+  .grid { display:grid; gap:22px; }
+  a.card { display:block; text-decoration:none; color:inherit; background:var(--card); border:1px solid var(--line); border-radius:22px; overflow:hidden; transition:transform .5s cubic-bezier(.2,.8,.2,1), border-color .4s; }
+  a.card:hover { transform:translateY(-6px); border-color:rgba(255,255,255,.28); }
+  .shot { aspect-ratio:1200/630; overflow:hidden; background:#000; }
+  .shot img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+  a.card:hover .shot img { transform:scale(1.04); }
+  .meta { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:22px 24px 24px; }
+  .meta b { display:block; font-size:22px; letter-spacing:-.01em; }
+  .meta div span { display:block; margin-top:4px; color:var(--muted); font-size:14px; }
+  .go { flex:none; width:52px; height:52px; border-radius:50%; display:grid; place-items:center; background:var(--text); color:var(--bg); font-size:22px; }
+  footer { margin-top:44px; padding-top:22px; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; color:var(--muted); font-size:13px; }
+  @media (min-width:860px) { .grid { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <span class="kick">Кафе «Жареная рыба» · Шахтинск</span>
+      <h1>Два варианта вашего сайта</h1>
+      <p>Собрали на ваших настоящих данных: рыба и цены, зал, отзывы из 2ГИС, адрес и заказ в WhatsApp в пару нажатий. Откройте оба — лучше с телефона.</p>
+    </div>
+    <div class="grid">
+      <a class="card" href="noir/">
+        <div class="shot"><img src="noir/og.jpg" alt="Вариант Noir — тёмный, в стиле ресторана"></div>
+        <div class="meta"><div><b>Вариант 1 · Noir</b><span>Тёмный и дорогой, как ресторан. Конструктор заказа.</span></div><span class="go">→</span></div>
+      </a>
+      <a class="card" href="market/">
+        <div class="shot"><img src="market/og.jpg" alt="Вариант Market — яркий плакатный"></div>
+        <div class="meta"><div><b>Вариант 2 · Market</b><span>Яркий и дерзкий, арки как в вашем зале. Калькулятор на компанию.</span></div><span class="go">→</span></div>
+      </a>
+    </div>
+    <footer><span>Концепты сайта — студия VANTA</span><span>Станционная, 70А · 12:00–23:00</span></footer>
+  </div>
+</body>
+</html>
